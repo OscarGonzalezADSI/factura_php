@@ -1,0 +1,64 @@
+<?php
+include_once '../../controlador/php/funciones_facturas.php';
+?>
+<div class="row">
+    <br><br><br><br>
+    <div>
+		<center>
+			<h2>factura</h2>
+		</center>
+		<button class="btn btn-primary navbar-left"
+					   data-toggle="modal"
+					   data-target="#modalNuevo">
+			Agregar factura
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+	</div>
+    <table class="table table-hover table-condensed table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th>id_factura</th>
+            <th>cliente_id</th>
+            <th>facturaFecha</th>
+            <th>facturaSubtotal</th>
+            <th>facturaIva</th>
+            <th>facturaTotal</th>
+            <th></th>
+        </tr>
+   </thead>
+    <tbody>
+    <?php
+	$data = verFacturas();
+	foreach($data as $row){
+        $datos = $row['id_factura'] . "||" .
+                  $row['cliente_id'] . "||" .
+                  $row['facturaFecha'] . "||" .
+                  $row['facturaSubtotal'] . "||" .
+                  $row['facturaIva'] . "||" .
+                  $row['facturaTotal'];
+	?>		
+		<tr>
+            <td><?php echo $row['id_factura']; ?></td>
+            <td><?php echo $row['cliente_id']; ?></td>
+            <td><?php echo $row['facturaFecha']; ?></td>
+            <td><?php echo $row['facturaSubtotal']; ?></td>
+            <td><?php echo $row['facturaIva']; ?></td>
+            <td><?php echo $row['facturaTotal']; ?></td>
+            <td>
+                <button class="btn btn-warning glyphicon glyphicon-pencil"
+                               data-toggle="modal"
+                               data-target="#modalEdicion"
+                               onclick="agregaform('<?php echo $datos; ?>')">
+                </button></td>
+            <td>
+                <button class="btn btn-danger glyphicon glyphicon-remove"
+                           onclick="preguntarSiNo('<?php echo $row['id_factura']; ?>')">
+                </button>
+            </td>
+        </tr>
+    <?php
+    }
+    ?>
+    </tbody>
+    </table>
+</div>
