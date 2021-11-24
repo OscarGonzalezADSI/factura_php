@@ -6,7 +6,7 @@ function generarFactura(){
 	$id_factura = $_POST['id_factura'];
 	$controllerFactura = new ControllerFactura();
     $data = $controllerFactura->miFactura($id_factura);
-    $viewfactura = new Factura();
+    $viewfactura = new MiFactura();
     $viewfactura->generarFacturaPDF($data);
 }
 
