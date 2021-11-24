@@ -31,7 +31,15 @@ class ControllerFactura{
 	function selectFactura($id_factura){
 		$factura = [
 	        [
-				'facturaNumero' => '77777',
+				'facturaNumero' => '1',
+				'clienteId' => '1090384538',
+				'facturaFecha' => '2020-04-29',
+				'facturaSubtotal' => '500000',
+				'facturaIva' => '50000',
+				'facturaTotal' => '50000',
+			],
+	        [
+				'facturaNumero' => '36',
 				'clienteId' => '1090384538',
 				'facturaFecha' => '2020-04-29',
 				'facturaSubtotal' => '500000',
@@ -52,16 +60,16 @@ class ControllerFactura{
 	function selectDetalle($factura){
 		$facturaNumero = $factura['facturaNumero'];
 		$detalle = [
-			['55555','1','Análisis del problema','250000','19',''],
-			['55555','1','Diseño del sistema','315000','19',''],
-			['55555','12','CRUD de tablas','100000','19',''],
-			['55555','1','Diseño de factura PDF','90000','19',''],
-			['55555','1','Diseño de informes de ventas','120000','19',''],
-			['55555','1','Diseño PDF a medida','150000','19',''],
-			['77777','1','Diseño PDF a medida','150000','19',''],
-			['77777','1','Diseño PDF a medida','150000','19',''],
-			['77777','1','Diseño PDF a medida','150000','19',''],
-			['77777','1','Diseño PDF a medida','150000','19','']
+			['1','1','Análisis del problema','250000','19',''],
+			['1','1','Diseño del sistema','315000','19',''],
+			['1','12','CRUD de tablas','100000','19',''],
+			['1','1','Diseño de factura PDF','90000','19',''],
+			['1','1','Diseño de informes de ventas','120000','19',''],
+			['1','1','Diseño PDF a medida','150000','19',''],
+			['36','1','Diseño PDF a medida','150000','19',''],
+			['36','1','Diseño PDF a medida','150000','19',''],
+			['36','1','Diseño PDF a medida','150000','19',''],
+			['36','1','Diseño PDF a medida','150000','19','']
 		];
 		$data = [];
 		foreach($detalle as $row)
