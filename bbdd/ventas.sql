@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2021 a las 03:12:02
+-- Tiempo de generación: 25-11-2021 a las 00:44:46
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -40,7 +40,9 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nombre`, `nit`, `direccion`, `telefono`) VALUES
-(1, 'oscar', '1090384538', 'mz c4 torcoroma 2', '3228858439');
+(1, 'oscar', '1090384538', 'mz c4 torcoroma 2', '3228858439'),
+(126, 'jorge', '1090384538', 'pocajontas 12', '57615155'),
+(129, 'fabian', '77777', 'haaa', '6666');
 
 -- --------------------------------------------------------
 
@@ -63,12 +65,12 @@ CREATE TABLE `detalle` (
 --
 
 INSERT INTO `detalle` (`id_detalle`, `factura_id`, `cantidad`, `descripcion`, `precio`, `iva`, `subtotal`) VALUES
-(1, 1, '1', 'cafe', '5000', '500', '4000'),
-(2, 1, '1', 'cafe', '5000', '500', '4000'),
-(3, 1, '1', 'cafe', '5000', '500', '4000'),
-(4, 1, '1', 'cafe', '5000', '500', '4000'),
-(5, 1, '1', 'cafe', '5000', '500', '4000'),
-(6, 1, '1', 'cafe', '5000', '500', '4000');
+(1, 1, '2', 'cafed', '5000', '19', '4000'),
+(2, 1, '3', 'cafe', '5000', '19', '4000'),
+(3, 1, '10', 'cafe', '5000', '15', '4000'),
+(4, 36, '1', 'chocolate', '5000', '17', '4000'),
+(5, 36, '1', 'leche', '5000', '10', '4000'),
+(36, 37, '4', 'hamburguesas', '6000', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -113,7 +115,9 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`id_factura`, `cliente_id`, `facturaFecha`, `facturaSubtotal`, `facturaIva`, `facturaTotal`) VALUES
-(1, 1, '2021-11-22', '555', '1', '1');
+(1, 1, '2021-11-22', 'aaaa', '19', '1'),
+(36, 126, '2021-11-18', '600', '19', '800'),
+(37, 129, '2021-11-05', '7777', '8888', '9999');
 
 --
 -- Índices para tablas volcadas
@@ -151,25 +155,25 @@ ALTER TABLE `factura`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
