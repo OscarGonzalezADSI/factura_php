@@ -1,6 +1,7 @@
 <?php
-require_once('../qrcode/qrcode.class.php');
-require('../pdfs/fusion.php');
+require_once('../librerias/fpdf/fpdf.php');
+require_once('../librerias/qrcode/qrcode.class.php');
+require_once('../librerias/pdfs/fusion.php');
 
 class Factura{
 
