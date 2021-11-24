@@ -1,29 +1,29 @@
-function agregardatos(id_cliente, nombre, nit, direccion, telefono){
-    cadena = "id_cliente=" + id_cliente +
-    "&nombre=" + nombre +
+function clienteRegistrar(nombre, nit, direccion, telefono){
+    cadena = "nombre=" + nombre +
     "&nit=" + nit +
     "&direccion=" + direccion +
     "&telefono=" + telefono;
     accion = "registrar";
     mensaje_si = "Cliente agregado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    cliente_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
-function agregaform(datos) {
+
+function clienteAgregaModificar(datos) {
     d = datos.split('||');
     $('#id_clienteu').val(d[0]);
     $('#nombreu').val(d[1]);
-    $('#nitu').val(d[2]);
-    $('#direccionu').val(d[3]);
-    $('#telefonou').val(d[4]);
+    $('#nitCliu').val(d[2]);
+    $('#direccionCliu').val(d[3]);
+    $('#telefonoCliu').val(d[4]);
 }
 
-function modificarCliente(){
+function clienteModificar(){
     id_cliente = $('#id_clienteu').val();
     nombre = $('#nombreu').val();
-    nit = $('#nitu').val();
-    direccion = $('#direccionu').val();
-    telefono = $('#telefonou').val();
+    nit = $('#nitCliu').val();
+    direccion = $('#direccionCliu').val();
+    telefono = $('#telefonoCliu').val();
     cadena = "id_cliente=" + id_cliente +
     "&nombre=" + nombre +
     "&nit=" + nit +
@@ -32,36 +32,36 @@ function modificarCliente(){
     accion = "modificar";
     mensaje_si = "Cliente modificado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    cliente_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
 
-function preguntarSiNo(id_cliente) {
+function clienteConfirmaEliminar(id_cliente) {
     var opcion = confirm("¿Esta seguro de eliminar el registro?");
     if (opcion == true) {
         alert("El registro será eliminado.");
-        eliminarDatos(id_cliente);
+        clienteEliminar(id_cliente);
     } else {
         alert("El proceso de eliminación del registro ha sido cancelado.");
     }
 }
 
-function eliminarDatos(id_cliente) {
+function clienteEliminar(id_cliente) {
     cadena = "id_cliente=" + id_cliente;
     accion = "eliminar";
     mensaje_si = "Cliente borrado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    cliente_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
 
-function a_ajax(cadena, accion, mensaje_si, mensaje_no){
+function cliente_ajax(cadena, accion, mensaje_si, mensaje_no){
     $.ajax({
         type: "POST",
-        url: "../modelo/accionesClientes.php?accion="+accion,
+        url: "../controlador/php/accionesClientes.php?accion="+accion,
         data: cadena,
         success: function (r){
             if (r == 1) {
-				alert(mensaje_si);
-				$('#tabla').load('../vista/componentes/vista_clientes.php');
+                alert(mensaje_si);
+	        $('#tablaCliente').load('../vista/componentes/vista_clientes.php');
             } else {
                 alert(r);
             }

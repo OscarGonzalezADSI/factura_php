@@ -1,11 +1,16 @@
 <?php
+require_once 'conexion.php';
 
 class Clientes
 {
+    function __construct()
+	{
+		$conexion = new Conexion();
+        $this->conexion = $conexion;
+    }
+	
 	function verCliente($id_cliente)
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$arreglo = array();
 		$consulta = "SELECT 
 			id_cliente,
@@ -15,7 +20,7 @@ class Clientes
 			telefono
 			FROM clientes
 			WHERE id_cliente = :id_cliente";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->bindParam(":id_cliente", $id_cliente);
 		$modules->execute();
 		$total = $modules->rowCount();
@@ -28,10 +33,9 @@ class Clientes
 		}
 		return $arreglo;
 	}
+	
 	function verClientes()
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$arreglo = array();
 		$consulta = "SELECT 
 			id_cliente,
@@ -40,7 +44,7 @@ class Clientes
 			direccion,
 			telefono
 			FROM clientes;";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$total = $modules->rowCount();
 		if ($total > 0) {
@@ -52,13 +56,12 @@ class Clientes
 		}
 		return $arreglo;
 	}
+	
 	function countClientes()
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$consulta = "SELECT count(id_cliente) as cant 
 			FROM clientes";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$data = $modules->fetch(PDO::FETCH_ASSOC);
 		$total = 0;
@@ -66,15 +69,3 @@ class Clientes
 		return $total;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

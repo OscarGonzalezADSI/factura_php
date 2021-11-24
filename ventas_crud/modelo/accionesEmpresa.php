@@ -1,11 +1,16 @@
 <?php
-date_default_timezone_set("America/Bogota");
 require_once 'conexion.php';
-$conexion = new Conexion();
-if (isset($_GET['accion'])) {
-	$accion = $_GET['accion'];
-	if ($accion == 'registrar') {
-		$id_empresa = $_POST['id_empresa'];
+
+class MoEmpresa{
+	
+    function __construct()
+	{
+		$conexion = new Conexion();
+        $this->conexion = $conexion;
+    }
+	
+	function empresaRegistrar($data)
+	{
 		$empresa = $_POST['empresa'];
 		$nit = $_POST['nit'];
 		$direccion = $_POST['direccion'];
@@ -13,22 +18,24 @@ if (isset($_GET['accion'])) {
 		$ciudad = $_POST['ciudad'];
 		$correo = $_POST['correo'];
 		$sql = "INSERT INTO empresa(
-			id_empresa, empresa, nit, direccion, telefono, ciudad, correo
-			)VALUES (?,?,?,?,?,?,?)";
-		$reg = $conexion->prepare($sql);
-		$reg->bindParam(1, $id_empresa);
-		$reg->bindParam(2, $empresa);
-		$reg->bindParam(3, $nit);
-		$reg->bindParam(4, $direccion);
-		$reg->bindParam(5, $telefono);
-		$reg->bindParam(6, $ciudad);
-		$reg->bindParam(7, $correo);
-		if ($reg->execute() === TRUE) {
+				empresa, nit, direccion, telefono, ciudad, correo
+				)VALUES (?,?,?,?,?,?)";
+		$reg = $this->conexion->prepare($sql);
+		$reg->bindParam(1, $empresa);
+		$reg->bindParam(2, $nit);
+		$reg->bindParam(3, $direccion);
+		$reg->bindParam(4, $telefono);
+		$reg->bindParam(5, $ciudad);
+		$reg->bindParam(6, $correo);
+		if($reg->execute() == TRUE) {
 			echo 1;
-		} else {
+		}else{
 			echo 0;
 		}
-	} else if ($accion == 'modificar') {
+	}
+
+	function empresaModificar($data)
+	{
 		$id_empresa = $_POST['id_empresa'];
 		$empresa = $_POST['empresa'];
 		$nit = $_POST['nit'];
@@ -36,15 +43,15 @@ if (isset($_GET['accion'])) {
 		$telefono = $_POST['telefono'];
 		$ciudad = $_POST['ciudad'];
 		$correo = $_POST['correo'];
-		$sql = "UPDATE empresa SET 
-			empresa=:empresa,
-			nit=:nit,
-			direccion=:direccion,
-			telefono=:telefono,
-			ciudad=:ciudad,
-			correo=:correo
-			WHERE id_empresa = :id_empresa;";
-		$reg = $conexion->prepare($sql);
+		$sql = "UPDATE empresa SET
+				empresa = :empresa,
+				nit = :nit,
+				direccion = :direccion,
+				telefono = :telefono,
+				ciudad = :ciudad,
+				correo = :correo
+				WHERE id_empresa = :id_empresa;";
+		$reg = $this->conexion->prepare($sql);
 		$reg->bindParam(":id_empresa", $id_empresa);
 		$reg->bindParam(":empresa", $empresa);
 		$reg->bindParam(":nit", $nit);
@@ -52,24 +59,23 @@ if (isset($_GET['accion'])) {
 		$reg->bindParam(":telefono", $telefono);
 		$reg->bindParam(":ciudad", $ciudad);
 		$reg->bindParam(":correo", $correo);
-		if ($reg->execute() === TRUE) {
+		if($reg->execute() == TRUE) {
 			echo 1;
 		} else {
 			echo 0;
 		}
-	} else if ($accion == 'eliminar') {
+	}
+
+	function empresaEliminar($data)
+	{
 		$id_empresa = $_POST['id_empresa'];
 		$sql = "DELETE FROM empresa WHERE id_empresa = :id_empresa;";
-		$reg = $conexion->prepare($sql);
+		$reg = $this->conexion->prepare($sql);
 		$reg->bindParam(":id_empresa", $id_empresa);
-		if ($reg->execute() === TRUE) {
+		if ($reg->execute() == TRUE) {
 			echo 1;
-		} else {
+		}else{
 			echo 0;
 		}
-	} else {
-		echo 2;
 	}
-} else {
-	echo 3;
 }

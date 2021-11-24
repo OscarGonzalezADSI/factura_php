@@ -1,11 +1,16 @@
 <?php
+require_once 'conexion.php';
 
 class Detalle
 {
+	function __construct()
+	{
+		$conexion = new Conexion();
+        $this->conexion = $conexion;
+    }
+	
 	function verDetalle($id_detalle)
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$arreglo = array();
 		$consulta = "SELECT 
 			id_detalle,
@@ -17,7 +22,7 @@ class Detalle
 			subtotal
 			FROM detalle
 			WHERE id_detalle = :id_detalle";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->bindParam(":id_detalle", $id_detalle);
 		$modules->execute();
 		$total = $modules->rowCount();
@@ -30,10 +35,9 @@ class Detalle
 		}
 		return $arreglo;
 	}
+	
 	function verDetalles()
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$arreglo = array();
 		$consulta = "SELECT 
 			id_detalle,
@@ -44,7 +48,7 @@ class Detalle
 			iva,
 			subtotal
 			FROM detalle;";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$total = $modules->rowCount();
 		if ($total > 0) {
@@ -56,13 +60,12 @@ class Detalle
 		}
 		return $arreglo;
 	}
+	
 	function countDetalles()
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$consulta = "SELECT count(id_detalle) as cant 
 			FROM detalle";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$data = $modules->fetch(PDO::FETCH_ASSOC);
 		$total = 0;

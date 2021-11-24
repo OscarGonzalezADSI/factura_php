@@ -9,7 +9,7 @@ include_once '../../controlador/php/funciones_empresa.php';
 		</center>
 		<button class="btn btn-primary navbar-left"
 					   data-toggle="modal"
-					   data-target="#modalNuevo">
+					   data-target="#modalNuevoEmpresa">
 			Agregar empresa
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
@@ -50,12 +50,12 @@ include_once '../../controlador/php/funciones_empresa.php';
             <td>
                 <button class="btn btn-warning glyphicon glyphicon-pencil"
                                data-toggle="modal"
-                               data-target="#modalEdicion"
-                               onclick="agregaform('<?php echo $datos; ?>')">
+                               data-target="#modalEdicionEmpresa"
+                               onclick="empresaAgregaModificar('<?php echo $datos; ?>')">
                 </button></td>
             <td>
                 <button class="btn btn-danger glyphicon glyphicon-remove"
-                           onclick="preguntarSiNo('<?php echo $row['id_empresa']; ?>')">
+                           onclick="empresaConfirmaEliminar('<?php echo $row['id_empresa']; ?>')">
                 </button>
             </td>
         </tr>

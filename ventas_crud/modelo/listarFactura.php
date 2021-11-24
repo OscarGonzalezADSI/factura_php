@@ -1,11 +1,16 @@
 <?php
+require_once 'conexion.php';
 
 class Factura
 {
+	function __construct()
+	{
+		$conexion = new Conexion();
+        $this->conexion = $conexion;
+    }
+	
 	function verfactura($id_factura)
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$arreglo = array();
 		$consulta = "SELECT 
 			id_factura,
@@ -16,7 +21,7 @@ class Factura
 			facturaTotal
 			FROM factura
 			WHERE id_factura = :id_factura";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->bindParam(":id_factura", $id_factura);
 		$modules->execute();
 		$total = $modules->rowCount();
@@ -29,10 +34,9 @@ class Factura
 		}
 		return $arreglo;
 	}
+	
 	function verFacturas()
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$arreglo = array();
 		$consulta = "SELECT 
 			id_factura,
@@ -42,7 +46,7 @@ class Factura
 			facturaIva,
 			facturaTotal
 			FROM factura;";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$total = $modules->rowCount();
 		if ($total > 0) {
@@ -54,13 +58,12 @@ class Factura
 		}
 		return $arreglo;
 	}
+	
 	function countFacturas()
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$consulta = "SELECT count(id_factura) as cant 
 			FROM factura";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$data = $modules->fetch(PDO::FETCH_ASSOC);
 		$total = 0;

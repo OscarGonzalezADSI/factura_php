@@ -9,7 +9,7 @@ include_once '../../controlador/php/funciones_clientes.php';
 		</center>
 		<button class="btn btn-primary navbar-left"
 					   data-toggle="modal"
-					   data-target="#modalNuevo">
+					   data-target="#modalNuevoCliente">
 			Agregar clientes
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
@@ -44,12 +44,12 @@ include_once '../../controlador/php/funciones_clientes.php';
             <td>
                 <button class="btn btn-warning glyphicon glyphicon-pencil"
                                data-toggle="modal"
-                               data-target="#modalEdicion"
-                               onclick="agregaform('<?php echo $datos; ?>')">
+                               data-target="#modalEdicionCliente"
+                               onclick="clienteAgregaModificar('<?php echo $datos; ?>')">
                 </button></td>
             <td>
                 <button class="btn btn-danger glyphicon glyphicon-remove"
-                           onclick="preguntarSiNo('<?php echo $row['id_cliente']; ?>')">
+                           onclick="clienteConfirmaEliminar('<?php echo $row['id_cliente']; ?>')">
                 </button>
             </td>
         </tr>

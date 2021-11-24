@@ -1,11 +1,16 @@
 <?php
+require_once 'conexion.php';
 
 class Empresa
 {
+    function __construct()
+	{
+		$conexion = new Conexion();
+        $this->conexion = $conexion;
+    }
+	
 	function verEmpresa($id_empresa)
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$arreglo = array();
 		$consulta = "SELECT 
 			id_empresa,
@@ -17,7 +22,7 @@ class Empresa
 			correo
 			FROM empresa
 			WHERE id_empresa = :id_empresa";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->bindParam(":id_empresa", $id_empresa);
 		$modules->execute();
 		$total = $modules->rowCount();
@@ -30,10 +35,9 @@ class Empresa
 		}
 		return $arreglo;
 	}
+	
 	function verEmpresas()
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$arreglo = array();
 		$consulta = "SELECT 
 			id_empresa,
@@ -44,7 +48,7 @@ class Empresa
 			ciudad,
 			correo
 			FROM empresa;";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$total = $modules->rowCount();
 		if ($total > 0) {
@@ -56,13 +60,12 @@ class Empresa
 		}
 		return $arreglo;
 	}
+	
 	function countEmpresas()
 	{
-		require_once 'conexion.php';
-		$conexion = new Conexion();
 		$consulta = "SELECT count(id_empresa) as cant 
 			FROM empresa";
-		$modules = $conexion->prepare($consulta);
+		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$data = $modules->fetch(PDO::FETCH_ASSOC);
 		$total = 0;

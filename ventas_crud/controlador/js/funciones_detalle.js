@@ -1,18 +1,16 @@
-function agregardatos(id_detalle, factura_id, cantidad, descripcion, precio, iva, subtotal){
-    cadena = "id_detalle=" + id_detalle +
-    "&factura_id=" + factura_id +
+function detalleRegistrar(factura_id, cantidad, descripcion, precio, iva, subtotal){
+    cadena = "factura_id=" + factura_id +
     "&cantidad=" + cantidad +
     "&descripcion=" + descripcion +
     "&precio=" + precio +
     "&iva=" + iva +
     "&subtotal=" + subtotal;
-
     accion = "registrar";
     mensaje_si = "Cliente agregado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    detalle_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
-function agregaform(datos) {
+function detalleAgregaModificar(datos) {
     d = datos.split('||');
     $('#id_detalleu').val(d[0]);
     $('#factura_idu').val(d[1]);
@@ -23,7 +21,7 @@ function agregaform(datos) {
     $('#subtotalu').val(d[6]);
 }
 
-function modificarCliente(){
+function detalleModificar(){
     id_detalle = $('#id_detalleu').val();
     factura_id = $('#factura_idu').val();
     cantidad = $('#cantidadu').val();
@@ -42,37 +40,36 @@ function modificarCliente(){
     accion = "modificar";
     mensaje_si = "Cliente modificado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    detalle_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
 
-function preguntarSiNo(id_detalle) {
+function detalleConfirmaEliminar(id_detalle) {
     var opcion = confirm("¿Esta seguro de eliminar el registro?");
     if (opcion == true) {
         alert("El registro será eliminado.");
-        eliminarDatos(id_detalle);
+        detalleEliminar(id_detalle);
     } else {
         alert("El proceso de eliminación del registro ha sido cancelado.");
     }
 }
 
-function eliminarDatos(id_detalle) {
+function detalleEliminar(id_detalle) {
     cadena = "id_detalle=" + id_detalle;
-
     accion = "eliminar";
     mensaje_si = "Cliente borrado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    detalle_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
 
-function a_ajax(cadena, accion, mensaje_si, mensaje_no){
+function detalle_ajax(cadena, accion, mensaje_si, mensaje_no){
     $.ajax({
         type: "POST",
-        url: "../modelo/accionesDetalle.php?accion="+accion,
+        url: "../controlador/php/accionesDetalle.php?accion="+accion,
         data: cadena,
         success: function (r){
             if (r == 1) {
-				alert(mensaje_si);
-				$('#tabla').load('../vista/componentes/vista_detalle.php');
+		alert(mensaje_si);
+		$('#tablaDetalle').load('../vista/componentes/vista_detalle.php');
             } else {
                 alert(mensaje_no);
             }

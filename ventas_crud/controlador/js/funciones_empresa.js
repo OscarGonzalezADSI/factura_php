@@ -1,6 +1,5 @@
-function agregardatos(id_empresa, empresa, nit, direccion, telefono, ciudad, correo){
-    cadena = "id_empresa=" + id_empresa +
-		"&empresa=" + empresa +
+function empresaRegistrar(empresa, nit, direccion, telefono, ciudad, correo){
+    cadena = "empresa=" + empresa +
 		"&nit=" + nit +
 		"&direccion=" + direccion +
 		"&telefono=" + telefono +
@@ -9,9 +8,9 @@ function agregardatos(id_empresa, empresa, nit, direccion, telefono, ciudad, cor
     accion = "registrar";
     mensaje_si = "Cliente agregado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    empresa_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
-function agregaform(datos) {
+function empresaAgregaModificar(datos) {
     d = datos.split('||');
     $('#id_empresau').val(d[0]);
     $('#empresau').val(d[1]);
@@ -22,7 +21,7 @@ function agregaform(datos) {
     $('#correou').val(d[6]);
 }
 
-function modificarCliente(){
+function empresaModificar(){
     id_empresa = $('#id_empresau').val();
     empresa = $('#empresau').val();
     nit = $('#nitu').val();
@@ -40,36 +39,36 @@ function modificarCliente(){
     accion = "modificar";
     mensaje_si = "Cliente modificado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    empresa_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
 
-function preguntarSiNo(id_empresa) {
+function empresaConfirmaEliminar(id_empresa) {
     var opcion = confirm("¿Esta seguro de eliminar el registro?");
     if (opcion == true) {
         alert("El registro será eliminado.");
-        eliminarDatos(id_empresa);
+        empresaEliminar(id_empresa);
     } else {
         alert("El proceso de eliminación del registro ha sido cancelado.");
     }
 }
 
-function eliminarDatos(id_empresa) {
+function empresaEliminar(id_empresa) {
     cadena = "id_empresa=" + id_empresa;
     accion = "eliminar";
     mensaje_si = "Cliente borrado con exito";
     mensaje_no= "Error de registro";
-    a_ajax(cadena, accion, mensaje_si, mensaje_no);
+    empresa_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
 
-function a_ajax(cadena, accion, mensaje_si, mensaje_no){
+function empresa_ajax(cadena, accion, mensaje_si, mensaje_no){
     $.ajax({
         type: "POST",
-        url: "../modelo/accionesEmpresa.php?accion="+accion,
+        url: "../controlador/php/accionesEmpresa.php?accion="+accion,
         data: cadena,
         success: function (r){
             if (r == 1) {
                 alert(mensaje_si);
-                $('#tabla').load('../vista/componentes/vista_empresa.php');
+                $('#tablaEmpresa').load('../vista/componentes/vista_empresa.php');
             } else {
                 alert(mensaje_no);
             }
