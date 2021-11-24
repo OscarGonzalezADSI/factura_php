@@ -23,7 +23,7 @@ class FormatPDF extends PDF_Code128{
 		$this->Ln();
 		$this->Cell(35,6,'','',0,'C');
 		$this->Cell(65,6,$empresa['ciudad'],'',0,'C');
-		$this->Cell(50,6,'Nro: '.$factura['facturaNumero'],'LR',0,'C');
+		$this->Cell(50,6,'Nro: '.$factura['id_factura'],'LR',0,'C');
 		$this->Ln();
 		$this->Cell(35,6,'','',0,'C');
 		$this->Cell(65,6,$empresa['correo'],'',0,'C');
@@ -116,10 +116,10 @@ class FormatPDF extends PDF_Code128{
                 $this->total = 0;
 		foreach($detalle as $row)
 		{
-			$cantidad = $row[1];
-			$descripcion = $row[2];
-			$precio = $row[3];
-			$iva = $row[4];
+			$cantidad = $row['cantidad'];
+			$descripcion = $row['descripcion'];
+			$precio = $row['precio'];
+			$iva = $row['iva'];
 			$impuestos = ($cantidad * $precio) * $iva / 100;
 			$subtotal = ($cantidad * $precio) + $impuestos;
 			$this->total += $subtotal;
