@@ -3,8 +3,9 @@ include "../controlador/Factura.php";
 include "../vista/factura_v3.php";
 
 function generarFactura(){
-    $controllerFactura = new ControllerFactura();
-    $data = $controllerFactura->miFactura('77777');
+	$id_factura = $_POST['id_factura'];
+	$controllerFactura = new ControllerFactura();
+    $data = $controllerFactura->miFactura($id_factura);
     $viewfactura = new Factura();
     $viewfactura->generarFacturaPDF($data);
 }
