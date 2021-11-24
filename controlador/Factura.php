@@ -1,4 +1,8 @@
 <?php
+include_once '../modelo/listarFactura.php';
+include_once '../modelo/listarClientes.php';
+include_once '../modelo/listarDetalle.php';
+
 class ControllerFactura{
 	
 	function miFactura($id_factura){
@@ -29,28 +33,11 @@ class ControllerFactura{
 	}
 	
 	function selectFactura($id_factura){
-		$factura = [
-	        [
-				'facturaNumero' => '1',
-				'clienteId' => '1090384538',
-				'facturaFecha' => '2020-04-29',
-				'facturaSubtotal' => '500000',
-				'facturaIva' => '50000',
-				'facturaTotal' => '50000',
-			],
-	        [
-				'facturaNumero' => '36',
-				'clienteId' => '1090384538',
-				'facturaFecha' => '2020-04-29',
-				'facturaSubtotal' => '500000',
-				'facturaIva' => '50000',
-				'facturaTotal' => '50000',
-			]
-		];
-		
-		foreach($factura as $row)
+		$factura = new Factura();
+		$data = $factura->verfacturas();
+		foreach($data as $row)
 		{
-		    if($row['facturaNumero'] == $id_factura){
+		    if($row['id_factura'] == $id_factura){
 				return $row;
 			}
 		}
@@ -58,7 +45,7 @@ class ControllerFactura{
 	}
 	
 	function selectDetalle($factura){
-		$facturaNumero = $factura['facturaNumero'];
+		$facturaNumero = $factura['id_factura'];
 		$detalle = [
 			['1','1','Análisis del problema','250000','19',''],
 			['1','1','Diseño del sistema','315000','19',''],
@@ -71,29 +58,25 @@ class ControllerFactura{
 			['36','1','Diseño PDF a medida','150000','19',''],
 			['36','1','Diseño PDF a medida','150000','19','']
 		];
-		$data = [];
-		foreach($detalle as $row)
+		$detalle = new Detalle();
+		$data = $detalle->verDetalles();
+		$items = [];
+		foreach($data as $row)
 		{
-		    if($row[0] == $facturaNumero){
-				array_push($data, $row);
+		    if($row['factura_id'] == $facturaNumero){
+				array_push($items, $row);
 			}
 		}
-	    return $data;	
+	    return $items;	
 	}
 	
 	function selectCliente($factura){
-		$id_cliente = $factura['clienteId'];
-		$clientes = [
-			[
-				'nombre' => "oscar gonzalez",
-				'nit' => '1090384538',
-				'direccion' => 'mzC4 torcoroma 2',
-				'telefono' => '3228858439'
-			]
-		];
-		foreach($clientes as $row)
+		$id_cliente = $factura['cliente_id'];
+		$clientes = new Clientes();
+		$data = $clientes->verCliente($id_cliente);
+		foreach($data as $row)
 		{
-		    if($row['nit'] == $id_cliente){
+		    if($row['id_cliente'] == $id_cliente){
 				return $row;
 			}
 		}
