@@ -3,7 +3,7 @@ require_once('../librerias/fpdf/fpdf.php');
 require_once('../librerias/qrcode/qrcode.class.php');
 require_once('../librerias/pdfs/fusion.php');
 
-class Factura{
+class MiFactura{
 
 	function generarFacturaPDF($data){
 		$qrcode = new QRcode('your message here', 'H');
