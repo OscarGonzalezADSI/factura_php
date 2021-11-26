@@ -49,5 +49,35 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		$('#detalleModificar').click(function () {
 			detalleModificar();
 		});
+		// logica de usabilidad
+		$('#abrirModalFactura').hide();
+		$('#abrirModalFactura').click(function () {
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth() + 1; //January is 0!
+			var yyyy = today.getFullYear();
+			if (dd < 10) {
+			  dd = '0' + dd;
+			}
+			if (mm < 10) {
+			  mm = '0' + mm;
+			}
+			var today = yyyy + '-' + mm + '-' + dd;
+			nitClib = $('#nitClib').val();
+			alert(nitClib);
+			$('#cliente_id').val(nitClib);
+		    $('#facturaFecha').val(today);
+			cliente_id = $('#cliente_id').val();
+			facturaFecha = $('#facturaFecha').val();
+			facturaSubtotal = "";
+			facturaIva = "";
+			facturaTotal = "";
+			facturaRegistrar(cliente_id, facturaFecha, facturaSubtotal, facturaIva, facturaTotal);
+			facturaBuscar(id_factura);
+		});
+		$('#clienteBuscar').click(function () {
+			nitClib = $('#nitClib').val();
+			clienteBuscar(nitClib);
+		});
 	});
 });

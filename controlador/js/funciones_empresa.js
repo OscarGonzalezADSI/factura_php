@@ -6,7 +6,7 @@ function empresaRegistrar(empresa, nit, direccion, telefono, ciudad, correo){
 		"&ciudad=" + ciudad +
 		"&correo=" + correo;
     accion = "registrar";
-    mensaje_si = "Cliente agregado con exito";
+    mensaje_si = "Empresa agregado con exito";
     mensaje_no= "Error de registro";
     empresa_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
@@ -37,7 +37,7 @@ function empresaModificar(){
 		"&ciudad=" + ciudad +
 		"&correo=" + correo;
     accion = "modificar";
-    mensaje_si = "Cliente modificado con exito";
+    mensaje_si = "Empresa modificado con exito";
     mensaje_no= "Error de registro";
     empresa_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
@@ -55,7 +55,7 @@ function empresaConfirmaEliminar(id_empresa) {
 function empresaEliminar(id_empresa) {
     cadena = "id_empresa=" + id_empresa;
     accion = "eliminar";
-    mensaje_si = "Cliente borrado con exito";
+    mensaje_si = "Empresa borrado con exito";
     mensaje_no= "Error de registro";
     empresa_ajax(cadena, accion, mensaje_si, mensaje_no);
 }

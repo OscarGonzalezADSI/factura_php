@@ -26,7 +26,8 @@ class MoFactura{
 		$reg->bindParam(4, $facturaIva);
 		$reg->bindParam(5, $facturaTotal);
 		if($reg->execute() == TRUE) {
-			echo 1;
+            echo  $this->conexion->lastInsertId();
+			//echo 1;
 		}else{
 			echo 0;
 		}

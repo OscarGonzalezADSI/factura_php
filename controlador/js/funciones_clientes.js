@@ -53,6 +53,12 @@ function clienteEliminar(id_cliente) {
     cliente_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
 
+function clienteBuscar(nit){
+    cadena = "nitClib=" + nit;
+    accion = "buscar";
+    cliente_buscar_ajax(cadena, accion);
+}
+
 function cliente_ajax(cadena, accion, mensaje_si, mensaje_no){
     $.ajax({
         type: "POST",
@@ -61,10 +67,29 @@ function cliente_ajax(cadena, accion, mensaje_si, mensaje_no){
         success: function (r){
             if (r == 1) {
                 alert(mensaje_si);
-	        $('#tablaCliente').load('../vista/componentes/vista_clientes.php');
+                $('#tablaCliente').load('../vista/componentes/vista_clientes.php');
             } else {
-                alert(r);
+                alert(mensaje_no);
             }
+        }
+    });
+}
+
+function cliente_buscar_ajax(cadena, accion){
+    $.ajax({
+        type: "POST",
+        url: "../controlador/php/accionesClientes.php?accion="+accion,
+        data: cadena,
+        success: function (r){
+			if(r == 1){
+				$('#abrirModalFactura').show();
+				window.setTimeout(function(){
+				$('#abrirBuscarCliente').click();
+				}, 1000);
+			}else{
+				$('#nitCli').val(cadena.slice(8));
+				$('#abrirRegistrarCliente').click();
+			}
         }
     });
 }

@@ -1,10 +1,11 @@
 <?php
 include_once '../../modelo/listarClientes.php';
 
-function verCliente($id_cliente){
+function verCliente($data){
+	$id_cliente = $data['nitClib'];
 	$clientes = new Clientes();
 	$data = $clientes->verCliente($id_cliente);
-	return $data;	
+	return $data;
 }
 
 function verClientes(){

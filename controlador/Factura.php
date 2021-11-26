@@ -71,12 +71,12 @@ class ControllerFactura{
 	}
 	
 	function selectCliente($factura){
-		$id_cliente = $factura['cliente_id'];
+		$nit = $factura['cliente_id'];
 		$clientes = new Clientes();
-		$data = $clientes->verCliente($id_cliente);
+		$data = $clientes->verCliente($nit);
 		foreach($data as $row)
 		{
-		    if($row['id_cliente'] == $id_cliente){
+		    if($row['nit'] == $nit){
 				return $row;
 			}
 		}

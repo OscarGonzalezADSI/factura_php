@@ -6,7 +6,7 @@ function detalleRegistrar(factura_id, cantidad, descripcion, precio, iva, subtot
     "&iva=" + iva +
     "&subtotal=" + subtotal;
     accion = "registrar";
-    mensaje_si = "Cliente agregado con exito";
+    mensaje_si = "Detalle agregado con exito";
     mensaje_no= "Error de registro";
     detalle_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
@@ -38,7 +38,7 @@ function detalleModificar(){
     "&subtotal=" + subtotal;
 
     accion = "modificar";
-    mensaje_si = "Cliente modificado con exito";
+    mensaje_si = "Detalle modificado con exito";
     mensaje_no= "Error de registro";
     detalle_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
@@ -56,7 +56,7 @@ function detalleConfirmaEliminar(id_detalle) {
 function detalleEliminar(id_detalle) {
     cadena = "id_detalle=" + id_detalle;
     accion = "eliminar";
-    mensaje_si = "Cliente borrado con exito";
+    mensaje_si = "Detalle borrado con exito";
     mensaje_no= "Error de registro";
     detalle_ajax(cadena, accion, mensaje_si, mensaje_no);
 }

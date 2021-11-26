@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Agregar cliente</h4>
+                <h4 class="modal-title" id="myModalLabel">Agregar Empresa</h4>
             </div>
             <div class="modal-body">
                 <label for="empresa">empresa</label>
@@ -38,7 +38,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Actualizar datos</h4>
+                <h4 class="modal-title" id="myModalLabel">Actualizar Empresa</h4>
             </div>
             <div class="modal-body">
                 <input type="number" hidden="" id="id_empresau">

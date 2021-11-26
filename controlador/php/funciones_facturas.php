@@ -1,10 +1,11 @@
 <?php
 include_once '../../modelo/listarFactura.php';
 
-function verFactura($id_factura){
+function verFactura($data){
+	$id_factura = $data['id_factura'];
 	$factura = new Factura();
 	$data = $factura->verfactura($id_factura);
-	return $data;	
+	return $data;
 }
 
 function verFacturas(){

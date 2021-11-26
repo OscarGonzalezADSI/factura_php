@@ -5,9 +5,9 @@ function facturaRegistrar(cliente_id, facturaFecha, facturaSubtotal, facturaIva,
 		"&facturaIva=" + facturaIva +
 		"&facturaTotal=" + facturaTotal;
     accion = "registrar";
-    mensaje_si = "Cliente agregado con exito";
+    mensaje_si = "Factura agregado con exito";
     mensaje_no= "Error de registro";
-    factura_ajax(cadena, accion, mensaje_si, mensaje_no);
+    factura_ajax_insertar(cadena, accion, mensaje_si, mensaje_no);
 }
 function facturaAgregaModificar(datos) {
     d = datos.split('||');
@@ -33,7 +33,7 @@ function facturaModificar(){
 		"&facturaIva=" + facturaIva +
 		"&facturaTotal=" + facturaTotal;
     accion = "modificar";
-    mensaje_si = "Cliente modificado con exito";
+    mensaje_si = "Factura modificada con exito";
     mensaje_no= "Error de registro";
     factura_ajax(cadena, accion, mensaje_si, mensaje_no);
 }
@@ -51,9 +51,15 @@ function facturaConfirmaEliminar(id_factura) {
 function facturaEliminar(id_factura) {
     cadena = "id_factura=" + id_factura;
     accion = "eliminar";
-    mensaje_si = "Cliente borrado con exito";
+    mensaje_si = "Factura borrado con exito";
     mensaje_no= "Error de registro";
     factura_ajax(cadena, accion, mensaje_si, mensaje_no);
+}
+
+function facturaBuscar(id_factura){
+    cadena = "id_factura=" + id_factura;
+    accion = "buscar";
+    factura_buscar_ajax(cadena, accion);
 }
 
 function factura_ajax(cadena, accion, mensaje_si, mensaje_no){
@@ -65,6 +71,33 @@ function factura_ajax(cadena, accion, mensaje_si, mensaje_no){
             if (r == 1) {
                 alert(mensaje_si);
                 $('#tablaFactura').load('../vista/componentes/vista_factura.php');
+            } else {
+                alert(mensaje_no);
+            }
+        }
+    });
+}
+
+function factura_buscar_ajax(cadena, accion){
+    $.ajax({
+        type: "POST",
+        url: "../controlador/php/accionesClientes.php?accion="+accion,
+        data: cadena,
+        success: function (r){
+			$('#factura_id').val(cadena.slice(11));
+        }
+    });
+}
+
+function factura_ajax_insertar(cadena, accion, mensaje_si, mensaje_no){
+    $.ajax({
+        type: "POST",
+        url: "../controlador/php/accionesFactura.php?accion="+accion,
+        data: cadena,
+        success: function (r){
+            if (r !== 0){
+				$('#tablaFactura').load('../vista/componentes/vista_factura.php');
+                $('#factura_id').val(r);
             } else {
                 alert(mensaje_no);
             }

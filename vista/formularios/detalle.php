@@ -6,15 +6,14 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Agregar cliente</h4>
+                <h4 class="modal-title" id="myModalLabel">Agregar Detalle</h4>
             </div>
             <div class="modal-body">
-                <label for="factura_id">factura_id</label>
-                <input type="number" id="factura_id" class="form-control input-sm" required="">
+				<input type="number" hidden="" id="factura_id">
+                <label for="descripcion">producto</label>
+                <input type="text" id="descripcion" class="form-control input-sm" required="">
                 <label for="cantidad">cantidad</label>
                 <input type="text" id="cantidad" class="form-control input-sm" required="">
-                <label for="descripcion">descripcion</label>
-                <input type="text" id="descripcion" class="form-control input-sm" required="">
                 <label for="precio">precio</label>
                 <input type="text" id="precio" class="form-control input-sm" required="">
                 <label for="iva">iva</label>
@@ -38,7 +37,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Actualizar datos</h4>
+                <h4 class="modal-title" id="myModalLabel">Actualizar Detalle</h4>
             </div>
             <div class="modal-body">
                 <input type="number" hidden="" id="id_detalleu">

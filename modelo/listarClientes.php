@@ -9,7 +9,7 @@ class Clientes
         $this->conexion = $conexion;
     }
 	
-	function verCliente($id_cliente)
+	function verCliente($nit)
 	{
 		$arreglo = array();
 		$consulta = "SELECT 
@@ -19,9 +19,9 @@ class Clientes
 			direccion,
 			telefono
 			FROM clientes
-			WHERE id_cliente = :id_cliente";
+			WHERE nit = :nit";
 		$modules = $this->conexion->prepare($consulta);
-		$modules->bindParam(":id_cliente", $id_cliente);
+		$modules->bindParam(":nit", $nit);
 		$modules->execute();
 		$total = $modules->rowCount();
 		if ($total > 0) {
