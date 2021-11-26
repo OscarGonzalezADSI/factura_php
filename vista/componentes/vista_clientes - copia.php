@@ -15,6 +15,13 @@ include_once '../../controlador/php/funciones_clientes.php';
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
 	</div>
+	<button id="abrirRegistrarCliente"
+		class="btn btn-primary navbar-left"
+		data-toggle="modal"
+		data-target="#modalNuevoCliente">
+		Agregar clientes
+		<span class="glyphicon glyphicon-plus"></span>
+	</button>
     <table class="table table-hover table-condensed table-bordered table-responsive">
     <thead>
         <tr>
@@ -59,4 +66,11 @@ include_once '../../controlador/php/funciones_clientes.php';
     ?>
     </tbody>
     </table>
+	<button id="abrirRegistrarCliente"
+                class="btn btn-primary navbar-left"
+				   data-toggle="modal"
+				   data-target="#modalNuevoCliente">
+		Agregar clientes
+		<span class="glyphicon glyphicon-plus"></span>
+	</button>
 </div>

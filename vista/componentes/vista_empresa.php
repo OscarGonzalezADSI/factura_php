@@ -7,12 +7,6 @@ include_once '../../controlador/php/funciones_empresa.php';
 		<center>
 			<h2>empresa</h2>
 		</center>
-		<button class="btn btn-primary navbar-left"
-					   data-toggle="modal"
-					   data-target="#modalNuevoEmpresa">
-			Agregar empresa
-			<span class="glyphicon glyphicon-plus"></span>
-		</button>
 	</div>
     <table class="table table-hover table-condensed table-bordered table-responsive">
     <thead>
@@ -64,4 +58,10 @@ include_once '../../controlador/php/funciones_empresa.php';
     ?>
     </tbody>
     </table>
+	<button class="btn btn-primary navbar-left"
+				   data-toggle="modal"
+				   data-target="#modalNuevoEmpresa">
+		Agregar empresa
+		<span class="glyphicon glyphicon-plus"></span>
+	</button>
 </div>

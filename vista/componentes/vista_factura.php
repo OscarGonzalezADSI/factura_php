@@ -7,12 +7,6 @@ include_once '../../controlador/php/funciones_facturas.php';
 		<center>
 			<h2>factura</h2>
 		</center>
-		<button class="btn btn-primary navbar-left"
-					   data-toggle="modal"
-					   data-target="#modalNuevoFactura">
-			Agregar factura
-			<span class="glyphicon glyphicon-plus"></span>
-		</button>
 	</div>
     <table class="table table-hover table-condensed table-bordered table-responsive">
     <thead>
@@ -20,9 +14,6 @@ include_once '../../controlador/php/funciones_facturas.php';
             <th>id_factura</th>
             <th>cliente_id</th>
             <th>facturaFecha</th>
-            <th>facturaSubtotal</th>
-            <th>facturaIva</th>
-            <th>facturaTotal</th>
             <th></th>
             <th></th>
             <th></th>
@@ -43,9 +34,6 @@ include_once '../../controlador/php/funciones_facturas.php';
             <td><?php echo $row['id_factura']; ?></td>
             <td><?php echo $row['cliente_id']; ?></td>
             <td><?php echo $row['facturaFecha']; ?></td>
-            <td><?php echo $row['facturaSubtotal']; ?></td>
-            <td><?php echo $row['facturaIva']; ?></td>
-            <td><?php echo $row['facturaTotal']; ?></td>
             <td>
 				<form method="post" action="../routes/generadorFactura.php">  
 				<input type="text" name="id_factura" value="<?php echo $row['id_factura']; ?>" hidden="">

@@ -22,7 +22,10 @@
                 <input type="text" id="subtotal" class="form-control input-sm" required="">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" id="detalleRegistrar">
+                <button type="button"
+				        class="btn btn-primary"
+						data-dismiss="modal"
+						id="detalleRegistrar">
                     Agregar
                 </button>
             </div>

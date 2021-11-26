@@ -7,13 +7,13 @@ include_once '../../controlador/php/funciones_facturas.php';
 		<center>
 			<h2>factura</h2>
 		</center>
-		<button class="btn btn-primary navbar-left"
-					   data-toggle="modal"
-					   data-target="#modalNuevoFactura">
-			Agregar factura
-			<span class="glyphicon glyphicon-plus"></span>
-		</button>
 	</div>
+	<button class="btn btn-primary navbar-left"
+				   data-toggle="modal"
+				   data-target="#modalNuevoFactura">
+		Agregar factura
+		<span class="glyphicon glyphicon-plus"></span>
+	</button>
     <table class="table table-hover table-condensed table-bordered table-responsive">
     <thead>
         <tr>
@@ -70,4 +70,10 @@ include_once '../../controlador/php/funciones_facturas.php';
     ?>
     </tbody>
     </table>
+	<button class="btn btn-primary navbar-left"
+					   data-toggle="modal"
+					   data-target="#modalNuevoFactura">
+			Agregar factura
+			<span class="glyphicon glyphicon-plus"></span>
+	</button>
 </div>
