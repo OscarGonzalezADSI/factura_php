@@ -21,7 +21,8 @@ class Empresa
 			ciudad,
 			correo
 			FROM empresa
-			WHERE id_empresa = :id_empresa";
+			WHERE id_empresa = :id_empresa
+			ORDER BY id_empresa DESC;";
 		$modules = $this->conexion->prepare($consulta);
 		$modules->bindParam(":id_empresa", $id_empresa);
 		$modules->execute();
@@ -47,7 +48,8 @@ class Empresa
 			telefono,
 			ciudad,
 			correo
-			FROM empresa;";
+			FROM empresa
+			ORDER BY id_empresa DESC;";
 		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$total = $modules->rowCount();

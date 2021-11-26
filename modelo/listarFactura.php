@@ -20,7 +20,8 @@ class Factura
 			facturaIva,
 			facturaTotal
 			FROM factura
-			WHERE id_factura = :id_factura";
+			WHERE id_factura = :id_factura
+			ORDER BY id_factura DESC;";
 		$modules = $this->conexion->prepare($consulta);
 		$modules->bindParam(":id_factura", $id_factura);
 		$modules->execute();
@@ -45,7 +46,8 @@ class Factura
 			facturaSubtotal,
 			facturaIva,
 			facturaTotal
-			FROM factura;";
+			FROM factura
+			ORDER BY id_factura DESC;";
 		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$total = $modules->rowCount();

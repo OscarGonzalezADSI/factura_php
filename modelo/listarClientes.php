@@ -19,7 +19,8 @@ class Clientes
 			direccion,
 			telefono
 			FROM clientes
-			WHERE nit = :nit";
+			WHERE nit = :nit
+			ORDER BY id_cliente DESC;";
 		$modules = $this->conexion->prepare($consulta);
 		$modules->bindParam(":nit", $nit);
 		$modules->execute();
@@ -43,7 +44,8 @@ class Clientes
 			nit,
 			direccion,
 			telefono
-			FROM clientes;";
+			FROM clientes
+			ORDER BY id_cliente DESC;;";
 		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$total = $modules->rowCount();

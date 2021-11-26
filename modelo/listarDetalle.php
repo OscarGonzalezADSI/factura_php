@@ -21,7 +21,8 @@ class Detalle
 			iva,
 			subtotal
 			FROM detalle
-			WHERE id_detalle = :id_detalle";
+			WHERE id_detalle = :id_detalle
+			ORDER BY id_detalle DESC;";
 		$modules = $this->conexion->prepare($consulta);
 		$modules->bindParam(":id_detalle", $id_detalle);
 		$modules->execute();
@@ -47,7 +48,8 @@ class Detalle
 			precio,
 			iva,
 			subtotal
-			FROM detalle;";
+			FROM detalle
+			ORDER BY id_detalle DESC;;";
 		$modules = $this->conexion->prepare($consulta);
 		$modules->execute();
 		$total = $modules->rowCount();
