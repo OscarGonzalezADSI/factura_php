@@ -68,8 +68,16 @@ function detalle_ajax(cadena, accion, mensaje_si, mensaje_no){
         data: cadena,
         success: function (r){
             if (r == 1) {
-		alert(mensaje_si);
-		$('#tablaDetalle').load('../vista/componentes/vista_detalle.php');
+				alert(mensaje_si);
+				$('#tablaDetalle').load('../vista/componentes/vista_detalle.php')
+				$('#descripcion').val("");
+				$('#cantidad').val("");
+				$('#precio').val("");
+				$('#iva').val("");
+				$('#subtotal').val("");
+				window.setTimeout(function(){
+					$('#registrarDetalle').click();
+				}, 1000);
             } else {
                 alert(mensaje_no);
             }
