@@ -8,10 +8,26 @@ include_once '../../controlador/php/funciones_clientes.php';
 			<h2>clientes</h2>
 		</center>
 		<button id="abrirBuscarCliente"
-					   class="btn btn-info navbar-left"
-					   data-toggle="modal"
-					   data-target="#modalBuscarCliente">
+			class="btn btn-info navbar-left"
+			data-toggle="modal"
+			data-target="#modalBuscarCliente">
 			Buscar clientes
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+		<button
+			id="abrirRegistrarCliente"
+			class="btn btn-info navbar-left fade"
+			data-toggle="modal"
+			data-target="#modalNuevoCliente">
+			Registrar cliente
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+		<button
+		   id="registrarDetalle"
+		   class="btn btn-primary navbar-left fade"
+		   data-toggle="modal"
+		   data-target="#modalNuevoDetalle">
+			Agregar detalle
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
 	</div>

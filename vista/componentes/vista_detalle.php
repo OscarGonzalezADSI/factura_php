@@ -94,12 +94,4 @@ include_once '../../controlador/php/funciones_detalles.php';
 		</tr>
     </tbody>
     </table>
-	<button
-	   id="registrarDetalle"
-	   class="btn btn-primary navbar-left"
-	   data-toggle="modal"
-	   data-target="#modalNuevoDetalle">
-		Agregar detalle
-		<span class="glyphicon glyphicon-plus"></span>
-	</button>
 </div>

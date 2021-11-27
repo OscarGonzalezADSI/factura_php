@@ -12,22 +12,26 @@
 				<input type="number" hidden="" id="factura_id">
                 <label for="descripcion">producto</label>
                 <input type="text" id="descripcion" class="form-control input-sm" required="">
-                <label for="cantidad">cantidad</label>
-                <input type="text" id="cantidad" class="form-control input-sm" required="">
                 <label for="precio">precio</label>
                 <input type="text" id="precio" class="form-control input-sm" required="">
                 <label for="iva">iva</label>
                 <input type="text" id="iva" class="form-control input-sm" required="">
-                <label for="subtotal">subtotal</label>
-                <input type="text" id="subtotal" class="form-control input-sm" required="">
+                <label for="cantidad">cantidad</label>
+                <input type="text" id="cantidad" class="form-control input-sm" required="">
+                <label for="subtotal" hidden="">subtotal</label>
+                <input type="text" hidden="" id="subtotal">
             </div>
             <div class="modal-footer">
                 <button type="button"
 				        class="btn btn-primary"
 						data-dismiss="modal"
 						id="detalleRegistrar">
-                    Agregar
+                    siguiente
                 </button>
+				<form method="post" action="../routes/generadorFactura.php">  
+				<input type="text" id="id_facturab" name="id_factura" hidden="">
+				<button name="submit" class="btn btn-info glyphicon glyphicon-download-alt"></button> 
+				</form>
             </div>
         </div>
     </div>
