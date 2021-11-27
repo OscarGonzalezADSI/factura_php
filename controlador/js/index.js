@@ -39,6 +39,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		});
 		$('#detalleRegistrar').click(function () {
 			factura_id = $('#factura_id').val();
+			$('#id_facturab').val(factura_id);
 			cantidad = $('#cantidad').val();
 			descripcion = $('#descripcion').val();
 			precio = $('#precio').val();
